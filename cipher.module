@@ -35,9 +35,7 @@ function cipher_form() {
             0 => t('Left'),
             1 => t('Right'),
         ),
-        '#description' => t('Enter the direction you would like to shift: left or right.'),
-        // '#element_validate' => array('element_validate_number'),
-        // '#required' => TRUE,
+        '#description' => t('Select the direction you would like to shift: left or right.'),
     );
     $form['message'] = array(
         '#title' => 'Message',
@@ -60,10 +58,10 @@ function cipher_form_submit($form, &$form_state) {
     $message = $form_state['values']['message'];
     $shifting = "";
 
-    $shifting = $message;
+    //$shifting = $message;
+    $shifting = str_split($message);
 
-
-    $_SESSION['message_result'] = $shifting;
+    $_SESSION['message_result'] = $shifting[0];
 
     $form_state['redirect'] = 'success';
 
