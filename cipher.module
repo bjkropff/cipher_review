@@ -1,7 +1,7 @@
 <?php
 function cipher_menu() {
     $items['cipher'] = array(
-        'title' => 'cipher',
+        'title' => 'Cipher',
         'page callback' => 'drupla_get_form',
         'page arguments' => 'array('cipher_form')',
         'access callback' => TRUE,
@@ -20,8 +20,8 @@ function cipher_menu() {
 }
 
 function cipher_form() {
-    $form['value'] = array(
-        '#title' => 'Shift Value',
+    $form['count'] = array(
+        '#title' => 'Shift Count',
         '#type' => 'textfield',
         '#description' => t('Enter the number of shifts in your message you would like.'),
         '#element_validate' => array('element_validate_number'),
@@ -31,7 +31,7 @@ function cipher_form() {
     $form['direction'] = array(
         '#title' => 'Shift direction',
         '#type' => 'textfield',
-        '#description' => t('Enter the direction you would like to shift.'),
+        '#description' => t('Enter the direction you would like to shift: left or right.'),
         '#element_validate' => array('element_validate_number'),
         '#required' => TRUE,
     );
@@ -48,4 +48,24 @@ function cipher_form() {
         '#value' => 'Encryption Time',
     );
     return $form;
+}
+
+function cipher_form_submit($form, &$form_submit) {
+    $count = $form_state['values']['count'];
+    $direction = $form_state['values']['direction'];
+    $message = $form_state['values']['message'];
+    $shifting = "";
+
+    $shifting = $message;    
+
+
+    $_SESSION['message_result'] = $shifting;
+
+    $form_state['redirect'] = 'encrypt';
+
+}
+
+function encrypted() {
+    $encryption = $_SESSION['message_result'];
+    return $encryption;
 }
