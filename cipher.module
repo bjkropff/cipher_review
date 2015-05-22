@@ -60,7 +60,7 @@ function cipher_form_submit($form, &$form_state) {
 
     $shifting = explode("", $message);
 
-    $secret = implode($shifting)
+    $secret = implode(","$shifting);
 
     $_SESSION['message_result'] = $secret;
 
