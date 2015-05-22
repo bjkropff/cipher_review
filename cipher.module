@@ -24,13 +24,17 @@ function cipher_form() {
         '#title' => 'Shift Count',
         '#type' => 'textfield',
         '#description' => t('Enter the number of shifts in your message you would like.'),
-        // '#element_validate' => array('element_validate_number'),
-        // '#required' => TRUE,
+        '#element_validate' => array('element_validate_number'),
+        '#required' => TRUE,
     );
 
     $form['direction'] = array(
         '#title' => 'Shift direction',
-        '#type' => 'textfield',
+        '#type' => 'select',
+        '#options' => array(
+            0 => t('Left'),
+            1 => t('Right'),
+        ),
         '#description' => t('Enter the direction you would like to shift: left or right.'),
         // '#element_validate' => array('element_validate_number'),
         // '#required' => TRUE,
