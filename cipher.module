@@ -57,21 +57,24 @@ function cipher_form_submit($form, &$form_state) {
     $direction = $form_state['values']['direction'];
     $message = $form_state['values']['message'];
     $shifting = "";
+    $secret = "";
+    $new = array();
 
-
-    //===========in works================//
     $shifting = str_split($message);
 
-    $secret = implode(","$shifting);
+    for($i = 0; $i < strlen($message); $i++){
+        $secret = ord($shifting[$i]);
+        $sec = $secret + $count;
+        $new = chr($sec);
+        array_push($new, $here);
+    }
+
+    $new = implode($new);
 
     $_SESSION['message_result'] = $secret;
 
-    //===========works===================//
-    // $_SESSION['message_result'] = $shifting;
-
 
     $form_state['redirect'] = 'success';
-
 }
 
 function encrypt_success() {
