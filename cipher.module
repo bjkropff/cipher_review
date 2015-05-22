@@ -53,12 +53,19 @@ function cipher_form() {
 }
 
 function cipher_form_submit($form, &$form_state) {
-    $count = $form_state['values']['count'];
     $message = $form_state['values']['message'];
     $direction = $form_state['values']['direction'];
+    $count = $form_state['values']['count'];
     if($direction == 'Left'){
         $count = $count * -1;
     }
+    if($count > 26){
+        $count = $count % 26;
+    }elseif($count < 26){
+        $count = $count % 26;
+    }
+
+
     $secret = array();
     //split the message
     $shifting = str_split(strtolower($message));
@@ -77,6 +84,12 @@ function cipher_form_submit($form, &$form_state) {
                 //adds amount to increase
                 $new_letter = $letter + $count;
 
+                if($new_letter > 122){
+                    $new_letter = $new_letter - 26;
+                }
+                if($new_letter < 97){
+                    $new_letter = $new_letter + 26;
+                }
                 //changes back into ascii letter
                 $here = chr($new_letter);
 
