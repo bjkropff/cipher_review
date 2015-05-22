@@ -62,9 +62,9 @@ function cipher_form_submit($form, &$form_state) {
     //===========in works================//
     $shifting = str_split($message);
 
-    //$secret = implode(","$shifting);
+    $secret = implode(","$shifting);
 
-    $_SESSION['message_result'] = $message;
+    $_SESSION['message_result'] = $secret;
 
     //===========works===================//
     // $_SESSION['message_result'] = $shifting;
