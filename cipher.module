@@ -56,19 +56,18 @@ function cipher_form_submit($form, &$form_state) {
     $count = $form_state['values']['count'];
     $direction = $form_state['values']['direction'];
     $message = $form_state['values']['message'];
-    $shifting = "";
-    $new = array();
+    $secret = array();
 
     $shifting = str_split($message);
 
     for($i = 0; $i < strlen($message); $i++){
-        $secret = ord($shifting[$i]);
-        $sec = $secret + $count;
-        $here = chr($sec);
-        array_push($new, $here);
+        $letter = ord($shifting[$i]);
+        $new_letter = $letter + $count;
+        $here = chr($new_letter);
+        array_push($secret, $here);
     }
 
-    $new = implode($new);
+    $secret = implode($secret);
 
     $_SESSION['message_result'] = $secret;
 
