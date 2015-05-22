@@ -9,8 +9,8 @@ function cipher_menu() {
     );
 
     $item['success'] = array(
-        'title' => 'Encrypt',
-        'page callback' => 'encrypted',
+        'title' => 'Success',
+        'page callback' => 'encrypt_success',
         'access callback' => TRUE,
         'type' => MENU_CALLBACK,
     );
@@ -24,23 +24,23 @@ function cipher_form() {
         '#title' => 'Shift Count',
         '#type' => 'textfield',
         '#description' => t('Enter the number of shifts in your message you would like.'),
-        '#element_validate' => array('element_validate_number'),
-        '#required' => TRUE,
+        // '#element_validate' => array('element_validate_number'),
+        // '#required' => TRUE,
     );
 
     $form['direction'] = array(
         '#title' => 'Shift direction',
         '#type' => 'textfield',
         '#description' => t('Enter the direction you would like to shift: left or right.'),
-        '#element_validate' => array('element_validate_number'),
-        '#required' => TRUE,
+        // '#element_validate' => array('element_validate_number'),
+        // '#required' => TRUE,
     );
     $form['message'] = array(
         '#title' => 'Message',
         '#type' => 'textfield',
         '#description' => t('Enter the message you would like to encrypt.'),
-        '#element_validate' => array('element_validate_number'),
-        '#required' => TRUE,
+        // '#element_validate' => array('element_validate_number'),
+        // '#required' => TRUE,
     );
 
     $form['submit'] = array(
@@ -65,7 +65,7 @@ function cipher_form_submit($form, &$form_state) {
 
 }
 
-function encrypted() {
+function encrypt_success() {
     $encryption = $_SESSION['message_result'];
-    return $encryption;
+    return 'Here is the encryption: ' . $encryption;
 }
