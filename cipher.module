@@ -58,11 +58,14 @@ function cipher_form_submit($form, &$form_state) {
     $message = $form_state['values']['message'];
     $shifting = "";
 
-    $shifting = explode("", $message);
+    // $shifting = explode("", $message);
+    //
+    // $secret = implode(","$shifting);
 
-    $secret = implode(","$shifting);
+    // $_SESSION['message_result'] = $secret;
 
-    $_SESSION['message_result'] = $secret;
+    $_SESSION['message_result'] = $shifting;
+
 
     $form_state['redirect'] = 'success';
 
