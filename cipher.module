@@ -8,7 +8,7 @@ function cipher_menu() {
         'type' => MENU_NORMAL_ITEM,
     );
 
-    $item['success'] = array(
+    $items['success'] = array(
         'title' => 'Success',
         'page callback' => 'encrypt_success',
         'access callback' => TRUE,
