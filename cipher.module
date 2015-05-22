@@ -58,14 +58,30 @@ function cipher_form_submit($form, &$form_state) {
     $message = $form_state['values']['message'];
     $secret = array();
 
-    $shifting = str_split($message);
+    //split the message
+    $shifting = str_split(strtolower($message));
 
+    //loops through each letter in the word
     for($i = 0; $i < strlen($message); $i++){
-        $letter = ord($shifting[$i]);
-        $new_letter = $letter + $count;
-        $here = chr($new_letter);
-        array_push($secret, $here);
-    }
+        //this checks for non-alphabetic character(including spaces)
+        if(!ctype_alpha($shifting[$i])){
+            //pushes them to the array
+                array_push($secret, $shifting[$i]);
+                
+            }else{
+                //changes letter to ascii number
+                $letter = ord($shifting[$i]);
+
+                //adds amount to increase
+                $new_letter = $letter + $count;
+
+                //changes back into ascii letter
+                $here = chr($new_letter);
+
+                //push to array
+                array_push($secret, $here);
+            }
+        }
 
     $secret = implode($secret);
 
