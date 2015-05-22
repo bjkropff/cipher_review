@@ -1,0 +1,5 @@
+name = Cipher Module
+description = This is a caesar cipher to encrypt messages
+package = Epicodus Example
+core = 7.x
+files[] = cipher.module
