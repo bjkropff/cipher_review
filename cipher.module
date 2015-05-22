@@ -50,7 +50,7 @@ function cipher_form() {
     return $form;
 }
 
-function cipher_form_submit($form, &$form_submit) {
+function cipher_form_submit($form, &$form_state) {
     $count = $form_state['values']['count'];
     $direction = $form_state['values']['direction'];
     $message = $form_state['values']['message'];
