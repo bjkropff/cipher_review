@@ -71,7 +71,7 @@ function cipher_form_submit($form, &$form_state) {
     }
     if($count > 26){
         $count = $count % 26;
-    }elseif($count < 26){
+    }elseif($count < -26){
         $count = $count % 26;
     }
 
